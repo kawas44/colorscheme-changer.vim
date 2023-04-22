@@ -61,10 +61,11 @@ function! ScheduleNewColorscheme(timer)
     " Define colorscheme and next time depending on time of day
     let isDayTime       = s:IsDayTime()
     let newColorscheme  = isDayTime ? s:dayColorscheme : s:nightColorscheme
+    let newBackground   = isDayTime ? 'light' : 'dark'
     let targetDate      = isDayTime ? s:nightTime : s:dayTime
 
     " Set new colorscheme
-    echom 'setting colorscheme ' . newColorscheme . ' at ' . strftime('%H:%M')
+    execute 'set background=' . newBackground
     execute 'colorscheme ' . newColorscheme
 
     let currentDate = [strftime('%H'), strftime('%M'), strftime('%S')]
